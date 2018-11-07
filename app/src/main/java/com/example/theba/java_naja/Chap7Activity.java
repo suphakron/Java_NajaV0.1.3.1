@@ -274,7 +274,7 @@ public class Chap7Activity extends AppCompatActivity
             }
         });
 
-        Button button_chap7_6 = (Button) findViewById(R.id.img_Button6);
+        button_chap7_6 = (Button) findViewById(R.id.img_Button6);
         button_chap7_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -292,6 +292,17 @@ public class MainActivity extends AppCompatActivity
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+
+        Button button_chap8 = (Button) findViewById(R.id.img_Button8);
+
+        button_chap8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Chapter8 = new Intent(MainActivity.this,Chap8Activity.class);
+                startActivity(Chapter8);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
     }
 
     @Override

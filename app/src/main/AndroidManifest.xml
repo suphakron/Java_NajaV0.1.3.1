@@ -149,7 +149,15 @@
         <activity android:name=".Chap7_6Activity" />
         <activity android:name=".Chap7_7Activity" />
         <activity android:name=".QuizTrueFalse_Chap2Activity" />
-        <activity android:name=".Chap8Activity"></activity>
+        <activity
+            android:name=".Chap8Activity"
+            android:label="@string/title_activity_chap8"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Chap8_1Activity" />
+        <activity android:name=".Chap8_2Activity" />
+        <activity android:name=".Chap8_3Activity" />
+        <activity android:name=".Chap8_4Activity" />
+        <activity android:name=".Chap8_5Activity"/>
     </application>
 
 </manifest>
