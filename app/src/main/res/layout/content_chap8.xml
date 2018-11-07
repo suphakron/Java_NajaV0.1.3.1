@@ -87,7 +87,7 @@
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
                     android:drawableTop="@mipmap/ic_launcher_round"
-                    android:text="บทที่ 5.4 \nตัวแปรอาร์เรย์ 2 มิติ " />
+                    android:text="บทที่ 8.4 \nการอ่ารเขียนไฟล์ " />
 
             </LinearLayout>
 
@@ -114,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:drawableTop="@mipmap/ic_launcher_round"
-                    android:text="บทที่ 5.5 \nสตริง (String)" />
+                    android:text="บทที่ 8.5 \nคลาสสำหรับอ่านเขียนไฟล์" />
 
                 <TextView
                     android:layout_width="wrap_content"
