@@ -49,7 +49,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="2"
-                android:drawableTop="@drawable/book"
+                android:drawableTop="@drawable/selector_chap1"
                 android:text="บทที่ 1\nพื้นฐานภาษา JAVA" />
 
 
@@ -61,7 +61,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="2"
-                android:drawableTop="@drawable/book2"
+                android:drawableTop="@drawable/selector_chap2"
                 android:text="บทที่ 2\nคําสั่งควบคุมทิศทางการทํางานของโปรแกรม" />
 
         </LinearLayout>
@@ -86,7 +86,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="2"
-                android:drawableTop="@drawable/book3"
+                android:drawableTop="@drawable/selector_chap3"
                 android:text="บทที่ 3\nอาร์เรย์" />
 
 
@@ -98,7 +98,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="2"
-                android:drawableTop="@drawable/book4"
+                android:drawableTop="@drawable/selector_chap4"
                 android:text="บทที่ 4\nคลาสและออบเจ็กต์" />
 
         </LinearLayout>
@@ -123,7 +123,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="7dp"
                 android:layout_weight="2"
-                android:drawableTop="@drawable/book5"
+                android:drawableTop="@drawable/selector_chap5"
                 android:text="บทที่ 5\nแนวคิดเกี่ยวกับการเขียนโปรแกรมเชิงวัตถุ" />
 
 
@@ -135,7 +135,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="2"
-                android:drawableTop="@drawable/book6"
+                android:drawableTop="@drawable/selector_chap6"
                 android:text="บทที่ 6\nการทํางานกับไฟล์" />
 
         </LinearLayout>
@@ -160,7 +160,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="7dp"
             android:layout_weight="2"
-            android:drawableTop="@drawable/book7"
+            android:drawableTop="@drawable/selector_chap7"
             android:text="บทที่ 7\nการจัดการข้อผิดพลาด" />
 
 
@@ -172,7 +172,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="7dp"
             android:layout_weight="2"
-            android:drawableTop="@drawable/book7"
+            android:drawableTop="@drawable/selector_chap8"
             android:text="บทที่ 8\การจัดการข้อผิดพลาดและประมวลผลไฟล์" />
 
     </LinearLayout>

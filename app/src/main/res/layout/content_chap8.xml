@@ -40,7 +40,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button8_1"
                     android:text="บทที่ 8.1 \nข้อผิดพลาดของโปรแกรม" />
 
 
@@ -51,7 +51,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button8_2"
                     android:text="บทที่ 8.2 \nการดักจับ Exception" />
 
             </LinearLayout>
@@ -75,7 +75,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button8_3"
                     android:text="บทที่ 8.3 \nInput/Output System" />
 
 
@@ -86,7 +86,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button8_4"
                     android:text="บทที่ 8.4 \nการอ่ารเขียนไฟล์ " />
 
             </LinearLayout>
@@ -113,7 +113,7 @@
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button8_5"
                     android:text="บทที่ 8.5 \nคลาสสำหรับอ่านเขียนไฟล์" />
 
                 <TextView

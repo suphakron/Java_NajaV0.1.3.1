@@ -40,7 +40,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_chap4"
                     android:text="บทนำ \nเมธอด (Methods)" />
 
 
@@ -51,7 +51,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button4_1"
                     android:text="บทที่ 4.1 \n โครงสร้างของเมธอด" />
 
             </LinearLayout>
@@ -75,7 +75,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button4_2"
                     android:text="บทที่ 4.2 \n การส่งค่าอาร์กิวเมนต์ของเมธอด" />
 
 
@@ -86,7 +86,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button4_3"
                     android:text="บทที่ 4.3 \n เมธอดที่มีการส่งค่ากลับ " />
 
             </LinearLayout>
@@ -113,7 +113,7 @@
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button4_4"
                     android:text="บทที่ 4.4 \n ตัวแปรแบบ Local" />
 
                 <TextView

@@ -60,7 +60,7 @@ public class Chap8Activity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.parseColor("#d78c01"));
+        toolbar.setBackgroundColor(Color.parseColor("#8cc63e"));
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -268,8 +268,8 @@ public class Chap8Activity extends AppCompatActivity
         button_chap8_5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Chapter8_5 = new Intent(Chap8Activity.this,Chap8_5Activity.class);
-                startActivity(Chapter8_5);
+
+                startActivity(new Intent(Chap8Activity.this,Chap8_5Activity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });

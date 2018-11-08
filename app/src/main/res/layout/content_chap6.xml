@@ -40,7 +40,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button6_1"
                     android:text="บทที่ 6.1 \nความหมายของโอโอพี" />
 
 
@@ -51,7 +51,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button6_2"
                     android:text="บทที่ 6.2 \nคลาสและออบเจ็กต์" />
 
             </LinearLayout>
@@ -75,7 +75,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button6_3"
                     android:text="บทที่ 6.3 \nสแตติก (Static)" />
 
 
@@ -86,7 +86,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button6_4"
                     android:text="บทที่ 6.4 \nคอนสตรัคเตอร์ (Constructors) " />
 
             </LinearLayout>

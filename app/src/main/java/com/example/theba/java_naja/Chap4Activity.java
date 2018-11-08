@@ -60,7 +60,7 @@ public class Chap4Activity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.parseColor("#d78c01"));
+        toolbar.setBackgroundColor(Color.parseColor("#8cc63e"));
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();

@@ -40,7 +40,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button7_1"
                     android:text="บทที่ 7.1 \nคีย์เวิร์ด static" />
 
 
@@ -51,7 +51,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button7_2"
                     android:text="บทที่ 7.2 \nคุณลักษณะของวิธีการเชิงวัตถุ (class)" />
 
             </LinearLayout>
@@ -75,7 +75,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button7_3"
                     android:text="บทที่ 7.3 \nการสืบทอด (Inheritance) " />
 
 
@@ -86,7 +86,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button7_4"
                     android:text="บทที่ 7.4 \nคอนสตรัคเตอร์และการสืบทอด " />
 
             </LinearLayout>
@@ -110,7 +110,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="7.5dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button7_5"
                     android:text="บทที่ 7.5 \nการออกแบบโปรแกรมเชิงวัตถุ " />
 
 
@@ -121,7 +121,7 @@
                     android:layout_marginLeft="7.5dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="3"
-                    android:drawableTop="@mipmap/ic_launcher_round"
+                    android:drawableTop="@drawable/selector_button7_6"
                     android:text="บทที่ 7.6 \nอินเทอร์เฟส " />
 
             </LinearLayout>

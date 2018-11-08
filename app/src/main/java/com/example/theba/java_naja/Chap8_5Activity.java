@@ -61,7 +61,7 @@ public class Chap8_5Activity extends AppCompatActivity {
 //if left to right sweep event on screen
                 if (x1 < x2) {
                     Toast.makeText(this, "Left to Right Swap Performed", Toast.LENGTH_LONG).show();
-                    Intent i = new Intent(Chap8_5Activity.this, Chap8_3Activity.class);
+                    Intent i = new Intent(Chap8_5Activity.this, Chap8Activity.class);
                     startActivity(i);
                     overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 }

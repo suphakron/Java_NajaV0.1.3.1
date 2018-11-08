@@ -27,9 +27,6 @@ public class Chap7_5Activity extends AppCompatActivity {
         TextView CopBODY = (TextView) findViewById(R.id.Body1);
         CopBODY.setTextIsSelectable(true);
 
-        TextView CopBODY2 = (TextView) findViewById(R.id.Body2);
-        CopBODY2.setTextIsSelectable(true);
-
         TextView CopHead = (TextView) findViewById(R.id.Header);
         CopHead.setTextIsSelectable(true);
 

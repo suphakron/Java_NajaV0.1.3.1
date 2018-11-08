@@ -36,11 +36,11 @@
             <Button
                 android:id="@+id/img_Button1"
                 android:layout_width="20dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="7.5dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_1"
                 android:text="บทที่ 3.1 \n ตัวดำเนินการทางตรรกศาสตร์ " />
 
 
@@ -51,7 +51,7 @@
                 android:layout_marginLeft="7.5dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_2"
                 android:text="บทที่ 3.2 \n การเลือกทำแบบทางเดียว (if Statement)" />
 
         </LinearLayout>
@@ -75,7 +75,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="7.5dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_3"
                 android:text="บทที่ 3.3 \n คำสั่งเลือกทำอย่างใดอย่างหนึ่ง (if - else)" />
 
 
@@ -86,7 +86,7 @@
                 android:layout_marginLeft="7.5dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_4"
                 android:text="บทที่ 3.4 \n การใช้คำสั่ง if-else-if " />
 
         </LinearLayout>
@@ -110,7 +110,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="7.5dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_5"
                 android:text="บทที่ 3.5 \n การเลือกทำแบบ switch " />
 
 
@@ -121,7 +121,7 @@
                 android:layout_marginLeft="7.5dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_6"
                 android:text="บทที่ 3.6 \n การควบคุมการทำซ้ำด้วยคำสั่ง for " />
 
         </LinearLayout>
@@ -145,7 +145,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="7.5dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_7"
                 android:text="บทที่ 3.7 \n ลูป WHILE " />
 
 
@@ -156,7 +156,7 @@
                 android:layout_marginLeft="7.5dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_8"
                 android:text="บทที่ 3.8 \n ลูป do-while " />
 
         </LinearLayout>
@@ -181,7 +181,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="7.5dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_9"
                 android:text="บทที่ 3.9 \n ลูปซ้อนลูป (Nested Loops)  " />
 
 
@@ -192,7 +192,7 @@
                 android:layout_marginLeft="7.5dp"
                 android:layout_marginRight="15dp"
                 android:layout_weight="3"
-                android:drawableTop="@mipmap/ic_launcher_round"
+                android:drawableTop="@drawable/selector_button3_10"
                 android:text="บทที่ 3.10 \n คำสั่ง break และ continue " />
 
         </LinearLayout>
