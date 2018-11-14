@@ -3,6 +3,8 @@
     <string name="facebook_app_id">230233111178824</string>
     <string name="fb_login_protocol_scheme">fb230233111178824</string>
 
+    <string name="edit_picProfile">แก้ไขรูปโปรไฟล์</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>

@@ -2,9 +2,14 @@ package com.example.theba.java_naja;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.SignInButton;
@@ -26,9 +32,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -38,8 +47,12 @@ public class EditProfileActivity extends AppCompatActivity {
     DatabaseReference myRef;
 
     private EditText Email, FName, LName, Password, ConfirmPassword;
-    private String userEmail, userFname, userLname, userPwd, userConPwd, user_id;
+    private String userEmail, userFname, userLname, userPwd, userConPwd, user_id, imgLocation;
     private Button Submit;
+    private TextView editPicture;
+    private Uri filepath;
+    private final int PICK_IMAGE_REQUEST = 71;
+    private CircleImageView imgProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +76,8 @@ public class EditProfileActivity extends AppCompatActivity {
         //Password = (EditText) findViewById(R.id.pwduser);
         //ConfirmPassword = (EditText) findViewById(R.id.pwduser2);
         Submit = (Button) findViewById(R.id.accept);
+        editPicture = findViewById(R.id.edit_picprofile);
+        imgProfile = findViewById(R.id.imageProfile);
 
         Email.setText(user.getEmail());
         Email.setEnabled(false);
@@ -100,6 +115,15 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+        editPicture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                chooseImage();
+
+            }
+        });
+
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +142,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     newPost.put("Email", userEmail);
                     newPost.put("FName", userFname);
                     newPost.put("LName", userLname);
+                    newPost.put("image-src", imgLocation);
                     //newPost.put("Password", userPwd);
                     current_user_db.updateChildren(newPost);
 
@@ -131,6 +156,33 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+            startActivityForResult(Intent.createChooser(intent,"Select Picture"),PICK_IMAGE_REQUEST);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==PICK_IMAGE_REQUEST&&resultCode==RESULT_OK){
+            filepath = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filepath);
+                imgProfile.setImageBitmap(bitmap);
+
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

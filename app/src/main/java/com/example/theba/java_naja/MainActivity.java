@@ -30,8 +30,19 @@ import android.widget.Toast;
 import com.facebook.AccessToken;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.TokenData;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,9 +54,12 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
+import java.net.URI;
 import java.net.URL;
+import java.security.Provider;
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -60,11 +74,12 @@ public class MainActivity extends AppCompatActivity
     private DatabaseReference myRef ,current_user_db_score, current_user_db_fname, current_user_db_lname, current_user_db;
     private String user_id, Score;
     private FirebaseUser user;
-    private String email;
+    private String email, imgurl;
     private TextView navUsername, score, Fname, Lname;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private int mScore;
     private TextView tv;
+    private UserInfo Uinfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +96,7 @@ public class MainActivity extends AppCompatActivity
         myRef = mFirebaseDatabase.getReference();
         user_id = user.getUid();
 
+
         current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
         current_user_db_fname = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("FName");
         current_user_db_lname = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("LName");
@@ -92,7 +108,7 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         final TextView navUsername = (TextView) headerView.findViewById(R.id.textEmail);
         //email = email.concat(" ").concat(user.getEmail());
-        CircleImageView img_profile = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.imageProfile);
+        final CircleImageView img_profile = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.imageProfile);
         Fname = (TextView) headerView.findViewById(R.id.textFName);
         Lname = (TextView) headerView.findViewById(R.id.textLName);
 
@@ -166,6 +182,27 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // update pic profile GOOGLE **TOO very Important**
+                List<? extends UserInfo> infos = user.getProviderData();
+                for (UserInfo ui : infos) {
+                    if (ui.getProviderId().equals(GoogleAuthProvider.PROVIDER_ID)) {
+                        String email = user.getEmail();
+                        navUsername.setText(email);
+                        // GOOGLE PIC PROFILE
+                        String imgurl = mAuth.getCurrentUser().getPhotoUrl().toString();
+                        Picasso.get().load(imgurl).into(img_profile);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //if login with facebook then get TOKEN and show Name
         if(AccessToken.getCurrentAccessToken()!=null) {
@@ -186,9 +223,10 @@ public class MainActivity extends AppCompatActivity
 
             //Image image_pro = user.getPhotoUrl("https://graph.facebook.com/" + userID + "/picture?type=large");
         } else {
-            String email = user.getEmail();
-            navUsername.setText(email);
+                    String email = user.getEmail();
+                    navUsername.setText(email);
         }
+
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override

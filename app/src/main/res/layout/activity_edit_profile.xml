@@ -37,16 +37,32 @@
     </LinearLayout>
 
     <TextView
-        android:layout_weight="0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <TextView
-        android:layout_gravity="left"
-        android:layout_marginLeft="40dp"
-        android:textSize="16dp"
-        android:text="แก้ไขข้อมูลส่วนตัว"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageProfile"
+        android:layout_gravity="center"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:background="@drawable/circle"
+        android:contentDescription="@string/nav_header_desc"
+        android:src="@mipmap/ic_personal_round" />
+
+    <TextView
+        android:id="@+id/edit_picprofile"
+        android:layout_marginTop="5dp"
+        android:textSize="12dp"
+        android:layout_gravity="center"
+        android:text="@string/edit_picProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
