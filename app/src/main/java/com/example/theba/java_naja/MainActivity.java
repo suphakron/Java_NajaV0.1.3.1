@@ -1,5 +1,6 @@
 package com.example.theba.java_naja;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -36,6 +37,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -48,6 +50,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -71,7 +75,7 @@ public class MainActivity extends AppCompatActivity
     NavigationView navigationView;
     FirebaseAuth mAuth;
     private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference myRef ,current_user_db_score, current_user_db_fname, current_user_db_lname, current_user_db;
+    private DatabaseReference myRef ,current_user_db_score, current_user_db_fname, current_user_db_lname, current_user_db, current_user_db_pic;
     private String user_id, Score;
     private FirebaseUser user;
     private String email, imgurl;
@@ -80,6 +84,8 @@ public class MainActivity extends AppCompatActivity
     private int mScore;
     private TextView tv;
     private UserInfo Uinfo;
+    private StorageReference mStorageRef,filepath;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +101,7 @@ public class MainActivity extends AppCompatActivity
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
         user_id = user.getUid();
+        mStorageRef = FirebaseStorage.getInstance().getReference();
 
 
         current_user_db = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
@@ -182,25 +189,59 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                // update pic profile GOOGLE **TOO very Important**
-                List<? extends UserInfo> infos = user.getProviderData();
-                for (UserInfo ui : infos) {
-                    if (ui.getProviderId().equals(GoogleAuthProvider.PROVIDER_ID)) {
-                        String email = user.getEmail();
-                        navUsername.setText(email);
-                        // GOOGLE PIC PROFILE
-                        String imgurl = mAuth.getCurrentUser().getPhotoUrl().toString();
-                        Picasso.get().load(imgurl).into(img_profile);
-                    }
-                }
-            }
+//        myRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                // update pic profile GOOGLE **TOO very Important**
+//                List<? extends UserInfo> infos = user.getProviderData();
+//                for (UserInfo ui : infos) {
+//                    if (ui.getProviderId().equals(GoogleAuthProvider.PROVIDER_ID)) {
+//                        String email = user.getEmail();
+//                        navUsername.setText(email);
+//                        // GOOGLE PIC PROFILE
+//                        String imgurl = mAuth.getCurrentUser().getPhotoUrl().toString();
+//                        Picasso.get().load(imgurl).into(img_profile);
+//                    } else {
+                        current_user_db_pic = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id).child("image-src");
+                        current_user_db_pic.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                String path = dataSnapshot.getValue(String.class);
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                if(path != null && img_profile != null) {
+                                    filepath = mStorageRef.child("Profile").child(path);
+                                    filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            Picasso.get().load(uri).into(img_profile);
+                                        }
+                                    });
+                                } else {
+                                }
+                            }
 
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+        img_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, EditProfileActivity.class);
+                finish();
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

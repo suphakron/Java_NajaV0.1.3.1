@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "396003332163-m577krug726k86b8u6odh9jhllhruu1q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.theba.java_naja",
+            "certificate_hash": "7a6edb3344903e6bb48a1fe975791d2226ecb778"
+          }
+        },
+        {
           "client_id": "396003332163-d8085cg0koa1nlbkfbrg0euhtlgmj7vg.apps.googleusercontent.com",
           "client_type": 3
         }
