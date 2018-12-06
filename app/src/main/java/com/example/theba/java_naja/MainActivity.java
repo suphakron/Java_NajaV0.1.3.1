@@ -28,6 +28,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.facebook.AccessToken;
 import com.facebook.Profile;
 import com.facebook.login.LoginManager;
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity
     private String email, imgurl;
     private TextView navUsername, score, Fname, Lname;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private int mScore;
+    private int mScore,count = 0;
     private TextView tv;
     private UserInfo Uinfo;
     private StorageReference mStorageRef,filepath;
@@ -273,7 +274,6 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() == null){
-
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }
             }
@@ -419,8 +419,6 @@ public class MainActivity extends AppCompatActivity
 
         return bitmap;
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

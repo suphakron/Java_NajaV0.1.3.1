@@ -23,7 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -36,6 +38,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -56,7 +60,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private Button Submit;
     private TextView editPicture;
     private StorageReference filepath;
-    private Uri uri;
+    private Uri uri,resultUri;
     private final int PICK_IMAGE_REQUEST = 71;
     private CircleImageView imgProfile;
     private StorageReference mStorageRef;
@@ -187,10 +191,23 @@ public class EditProfileActivity extends AppCompatActivity {
                     //newPost.put("Password", userPwd);
                     current_user_db.updateChildren(newPost);
 
-                    Intent intent = new Intent(EditProfileActivity.this,MainActivity.class);
+                filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
+                        if(taskSnapshot!=null){
+                            Toast.makeText(EditProfileActivity.this,"Picture Added",Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(EditProfileActivity.this,"Picture Can't Added",Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+                    Intent intent = new Intent(EditProfileActivity.this,LoginActivity.class);
                     Toast.makeText(EditProfileActivity.this,"ทำการบันทึกประวัติของคุณแล้ว",Toast.LENGTH_LONG).show();
-                    finish();
+                    startActivity(intent);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                 /*} else {
                     Toast.makeText(EditProfileActivity.this,"รหัสผ่านไม่ตรงกัน กรุณาตรวจสอบ",Toast.LENGTH_LONG).show();
                 }*/
@@ -212,9 +229,92 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==PICK_IMAGE_REQUEST&&resultCode==RESULT_OK){
+        if(requestCode==PICK_IMAGE_REQUEST&&resultCode==RESULT_OK&&data!=null) {
             Uri uri = data.getData();
             //imgProfile.setImageURI(uri);
+
+            CropImage.activity(uri)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1, 1)
+                    .start(this);
+        }
+
+        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE){
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+
+            if(resultCode == RESULT_OK){
+                resultUri = result.getUri();
+
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),resultUri);
+                    imgProfile.setImageBitmap(bitmap);
+
+                    filepath = mStorageRef.child("Profile").child(user_id + ".jpg");
+                    imgLocation = user_id + ".jpg";
+
+                    /*filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
+                            if(taskSnapshot!=null){
+                                Toast.makeText(EditProfileActivity.this,"Picture Added",Toast.LENGTH_SHORT).show();
+                                Uri uploadurl = taskSnapshot.getUploadSessionUri();
+                                current_user_db.child("image").setValue(uploadurl)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+
+                                                    startActivity(new Intent(EditProfileActivity.this, EditProfileActivity.class));
+
+                                                    Toast.makeText(EditProfileActivity.this,"Image upload Done!",Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    String msg = task.getException().getMessage();
+                                                    Toast.makeText(EditProfileActivity.this,"Error : " + msg,Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                            }
+
+                        }
+                    });*/
+
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+
+
+
+                /*filepath.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> Task) {
+                        if(Task.isSuccessful()){
+                            Toast.makeText(EditProfileActivity.this,"Picture Added",Toast.LENGTH_SHORT).show();
+                            Uri downloadurl =  Task.getResult().getUploadSessionUri();
+
+                            current_user_db.child("image").setValue(downloadurl)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()){
+
+                                                startActivity(new Intent(EditProfileActivity.this, EditProfileActivity.class));
+
+                                                Toast.makeText(EditProfileActivity.this,"Image upload Done!",Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                String msg = task.getException().getMessage();
+                                                Toast.makeText(EditProfileActivity.this,"Error : " + msg,Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+                        }
+                    }
+                });*/
+            } else {
+                Toast.makeText(EditProfileActivity.this,"Error : Image can't cropped. try again",Toast.LENGTH_SHORT).show();
+            }
+
+        }
 
 //            filepath = mStorageRef.child("Profile").child(uri.getLastPathSegment());
 //            imgLocation = uri.getLastPathSegment();
@@ -226,26 +326,25 @@ public class EditProfileActivity extends AppCompatActivity {
 //                }
 //            });
 
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
-                imgProfile.setImageBitmap(bitmap);
-
-                filepath = mStorageRef.child("Profile").child(uri.getLastPathSegment());
-                imgLocation = uri.getLastPathSegment();
-                filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
-                        Uri uploadurl =  taskSnapshot.getUploadSessionUri();
-                        current_user_db.child("image").setValue(uploadurl);
-
-                    }
-                });
-
-            }
-            catch (IOException e){
-                e.printStackTrace();
-            }
-        }
+//            try {
+//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),uri);
+//                imgProfile.setImageBitmap(bitmap);
+//
+//                filepath = mStorageRef.child("Profile").child(uri.getLastPathSegment());
+//                imgLocation = uri.getLastPathSegment();
+//                    filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(final UploadTask.TaskSnapshot taskSnapshot) {
+//                            Uri uploadurl = taskSnapshot.getUploadSessionUri();
+//                            current_user_db.child("image").setValue(uploadurl);
+//                            //current_user_db.child("image").setValue(uploadurl);
+//                        }
+//                    });
+//            }
+//            catch (IOException e){
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Override
