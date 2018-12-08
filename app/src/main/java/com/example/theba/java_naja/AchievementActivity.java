@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class AchievementActivity extends AppCompatActivity {
 
     private TextView button_chap1, button_chap2, button_chap3, button_chap4,
-                     button_chap5, button_chap6, button_chap7 , score_show1;
+                     button_chap5, button_chap6, button_chap7 , score_show1, button_cert;
     private ImageView achievement1;
 
     private FirebaseAuth mAuth;
@@ -62,12 +62,23 @@ public class AchievementActivity extends AppCompatActivity {
         button_chap5 = (TextView) findViewById(R.id.but_chap5);
         button_chap6 = (TextView) findViewById(R.id.but_chap6);
         button_chap7 = (TextView) findViewById(R.id.but_chap7);
+        button_cert = findViewById(R.id.but_certificate);
 
         button_chap1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(AchievementActivity.this,Achieve_Chap1Activity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+
+
+        button_cert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AchievementActivity.this,CertificateActivity.class));
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_in_left);
             }
         });
 

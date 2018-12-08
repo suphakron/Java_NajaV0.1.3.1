@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/apk/res-auto"
     package="com.example.theba.java_naja">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -162,10 +161,13 @@
         <activity android:name=".Chap8_3Activity" />
         <activity android:name=".Chap8_4Activity" />
         <activity android:name=".Chap8_5Activity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
 
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/> <!-- optional (needed if default theme has no action bar) -->
-
+        <activity android:name=".CertificateActivity"
+            android:theme="@style/AppTheme.NoActionBarEDIT"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

@@ -245,6 +245,36 @@
                     android:layout_below="@id/but_chap6"
                     android:layout_toLeftOf="@id/block7" />
 
+                <TextView
+                    android:id="@+id/but_certificate"
+                    android:layout_below="@id/but_chap7"
+                    android:text="@string/certificate"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="15dp"
+                    android:layout_marginLeft="-5dp"
+                    android:layout_marginRight="-5dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorDarkness"
+                    android:background="@drawable/backwithborder2"
+                    android:textStyle="bold"
+                    android:textSize="22sp"/>
+
+                <TextView
+                    android:id="@+id/blockcertificate"
+                    android:layout_below="@id/but_chap6"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="50dp"
+                    android:layout_height="60dp" />
+
+                <ImageView
+                    android:id="@+id/achievement_certificate"
+                    android:layout_width="50dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_below="@id/but_chap6"
+                    android:layout_toLeftOf="@id/block7" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
