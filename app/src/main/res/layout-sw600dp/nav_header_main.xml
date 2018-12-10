@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
-    android:background="@drawable/side_nav_bar"
+    android:background="@color/colorPrimary"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingBottom="6dp"
@@ -124,7 +124,7 @@
             android:gravity="center"
             android:text="0%"
             android:textColor="#0044ff"
-            android:textSize="20sp"
+            android:textSize="14sp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="67dp" />
         </RelativeLayout>
