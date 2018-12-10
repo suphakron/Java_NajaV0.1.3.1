@@ -2,6 +2,7 @@ package com.javanajautc.theba.java_naja;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -81,8 +82,11 @@ public class MainActivity extends AppCompatActivity
     private FirebaseUser user;
     private String email, imgurl;
     private TextView navUsername, score, Fname, Lname;
+    private ImageView icon_cert;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private int mScore,count = 0;
+    private double score_percent;
+    private CircleImageView img_profile;
     private TextView tv;
     private UserInfo Uinfo;
     private StorageReference mStorageRef,filepath;
@@ -116,9 +120,11 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         final TextView navUsername = (TextView) headerView.findViewById(R.id.textEmail);
         //email = email.concat(" ").concat(user.getEmail());
-        final CircleImageView img_profile = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.imageProfile);
+        img_profile = (CircleImageView) navigationView.getHeaderView(0).findViewById(R.id.imageProfile);
         Fname = (TextView) headerView.findViewById(R.id.textFName);
         Lname = (TextView) headerView.findViewById(R.id.textLName);
+        icon_cert = headerView.findViewById(R.id.icon_cert);
+        icon_cert.setVisibility(View.INVISIBLE);
 
         score = (TextView) navigationView.getHeaderView(0).findViewById(R.id.Score_show);
 //        Userinfomation uInfo = new Userinfomation();
@@ -138,16 +144,33 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.hasChild("UserScore")) {
-                    current_user_db_score.addValueEventListener(new ValueEventListener() {
+                    ValueEventListener valueEventListener = current_user_db_score.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             mScore = dataSnapshot.getValue(Integer.class);
                             Score = String.valueOf(mScore);
                             score.setText(Score);
 
+                            score_percent = mScore * 100;
+                            score_percent = score_percent / 45;
+                            //Score = Double.toString(Math.floor(score_percent));
+                            Score = Integer.toString((int)score_percent);
+
+                            String Score_str = Score.replace(".","");
+
+
+                            mScore = Integer.parseInt(Score_str);
+                            //Toast.makeText(MainActivity.this,"" + mScore,Toast.LENGTH_SHORT).show(); Check integer percent
+                            if(mScore>=100){
+                                icon_cert.setVisibility(View.VISIBLE);
+                            } else {
+                                icon_cert.setVisibility(View.INVISIBLE);
+                            }
                             mProgress.setProgress(mScore);
-                            tv.setText(Score + " %");
+                            //tv.setText(String.format("%.2f %%", score_percent));
+                            tv.setText(mScore + " %");
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
@@ -243,6 +266,14 @@ public class MainActivity extends AppCompatActivity
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+
+        icon_cert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,CertificateActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                finish();
             }
         });
 
@@ -467,9 +498,9 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_help) {
 
             Map newpost = new HashMap();
-            newpost.put("UserScore",3);
+            newpost.put("UserScore",45);
             current_user_db.updateChildren(newpost);
-            Toast.makeText(MainActivity.this,"Score Update : 3",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"Score Update : 45",Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_send) {
 
@@ -488,5 +519,4 @@ public class MainActivity extends AppCompatActivity
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
-
 }

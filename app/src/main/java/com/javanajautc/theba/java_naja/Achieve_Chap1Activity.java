@@ -33,7 +33,7 @@ public class Achieve_Chap1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_achieve__chap1);
 
         ActionBar mBar = getSupportActionBar();
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#30000000")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8cc63e")));
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         getSupportActionBar().setCustomView(R.layout.actionbar);

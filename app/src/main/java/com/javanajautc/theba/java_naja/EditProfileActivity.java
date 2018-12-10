@@ -13,6 +13,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -70,7 +72,9 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        getSupportActionBar().setTitle("แก้ไขข้อมูลส่วนตัว");
+        String title = "แก้ไขข้อมูลส่วนตัว";
+        //getSupportActionBar().setTitle("แก้ไขข้อมูลส่วนตัว");
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#ffffff'>"+ title +"</font>"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mAuth = FirebaseAuth.getInstance();

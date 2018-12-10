@@ -39,7 +39,8 @@ public class AchievementActivity extends AppCompatActivity {
         setContentView(R.layout.activity_achievement);
 
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#30000000")));
+        //getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#30000000")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#8cc63e")));
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar);
         getSupportActionBar().setTitle("ความสำเร็จ");

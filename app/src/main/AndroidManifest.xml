@@ -8,9 +8,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!--<supports-screens
-        android:normalScreens="true"/>-->
-
+    <!--
+    <supports-screens
+        android:normalScreens="true"/>
+    -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -162,15 +163,17 @@
         <activity android:name=".Chap8_1Activity" />
         <activity android:name=".Chap8_2Activity" />
         <activity android:name=".Chap8_3Activity" />
-        <activity android:name=".Chap8_4Activity" />
+        <activity android:name=".chap8_4Activity" />
         <activity android:name=".Chap8_5Activity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" /> <!-- optional (needed if default theme has no action bar) -->
 
-        <activity android:name=".CertificateActivity"
-            android:theme="@style/AppTheme.NoActionBarEDIT"
-            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".CertificateActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBarEDIT" />
     </application>
 
 </manifest>

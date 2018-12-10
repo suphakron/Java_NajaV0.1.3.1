@@ -257,7 +257,7 @@ public class Chap8Activity extends AppCompatActivity
         button_chap8_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Chapter8_4 = new Intent(Chap8Activity.this,Chap8_4Activity.class);
+                Intent Chapter8_4 = new Intent(Chap8Activity.this,chap8_4Activity.class);
                 startActivity(Chapter8_4);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
